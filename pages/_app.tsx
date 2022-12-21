@@ -1,10 +1,16 @@
 import type { AppProps } from "next/app";
-import { RecoilRoot } from "recoil";
+import { CookiesProvider } from "react-cookie";
+import Head from "next/head";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <RecoilRoot>
-      <Component {...pageProps} />
-    </RecoilRoot>
+    <>
+        <Head>
+          <link rel="stylesheet" href="/out.css" />
+        </Head>
+        <CookiesProvider>
+          <Component {...pageProps} />
+        </CookiesProvider>
+    </>
   );
 }
